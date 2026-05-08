@@ -1,7 +1,5 @@
+import OrdersTemplate from '../components/templates/OrdersTemplate';
+
 export default function Orders() {
-  return (
-    <div>
-      <h1>Orders</h1>
-    </div>
-  )
+  return <OrdersTemplate />;
 }

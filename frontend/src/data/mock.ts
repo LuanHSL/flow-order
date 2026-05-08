@@ -35,3 +35,95 @@ export const products: Product[] = [
   { id: 8, name: 'Milkshake Oreo', price: 16.90, image: '/images/products/acai.png' },
   { id: 9, name: 'Brownie Especial', price: 12.90, image: '/images/products/pizza.png' },
 ];
+
+export type OrderStatus = 'producing' | 'ready';
+
+export interface OrderItem {
+  name: string;
+  quantity: number;
+}
+
+export interface Order {
+  id: number;
+  orderNumber: string;
+  customerName: string;
+  items: OrderItem[];
+  status: OrderStatus;
+  createdAt: string;
+  total: number;
+}
+
+export const orders: Order[] = [
+  {
+    id: 1,
+    orderNumber: '#001',
+    customerName: 'João Silva',
+    items: [
+      { name: 'Classic Smash Burger', quantity: 2 },
+      { name: 'Coca-Cola 600ml', quantity: 2 },
+    ],
+    status: 'producing',
+    createdAt: '14:02',
+    total: 79.60,
+  },
+  {
+    id: 2,
+    orderNumber: '#002',
+    customerName: 'Maria Souza',
+    items: [
+      { name: 'Pizza Pepperoni', quantity: 1 },
+      { name: 'Açaí Bowl', quantity: 1 },
+    ],
+    status: 'producing',
+    createdAt: '14:08',
+    total: 69.80,
+  },
+  {
+    id: 3,
+    orderNumber: '#003',
+    customerName: 'Carlos Mendes',
+    items: [
+      { name: 'Caesar Salad', quantity: 1 },
+      { name: 'Milkshake Oreo', quantity: 1 },
+      { name: 'Brownie Especial', quantity: 2 },
+    ],
+    status: 'producing',
+    createdAt: '14:12',
+    total: 67.60,
+  },
+  {
+    id: 4,
+    orderNumber: '#004',
+    customerName: 'Ana Costa',
+    items: [
+      { name: 'Frango Grelhado', quantity: 1 },
+      { name: 'Batata Frita', quantity: 1 },
+    ],
+    status: 'ready',
+    createdAt: '13:45',
+    total: 47.80,
+  },
+  {
+    id: 5,
+    orderNumber: '#005',
+    customerName: 'Pedro Lima',
+    items: [
+      { name: 'Classic Smash Burger', quantity: 3 },
+      { name: 'Coca-Cola 600ml', quantity: 3 },
+    ],
+    status: 'ready',
+    createdAt: '13:50',
+    total: 119.40,
+  },
+  {
+    id: 6,
+    orderNumber: '#006',
+    customerName: 'Fernanda Rocha',
+    items: [
+      { name: 'Pizza Pepperoni', quantity: 2 },
+    ],
+    status: 'ready',
+    createdAt: '13:55',
+    total: 99.80,
+  },
+];
