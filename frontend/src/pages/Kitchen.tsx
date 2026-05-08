@@ -1,7 +1,5 @@
+import KitchenTemplate from '../components/templates/KitchenTemplate';
+
 export default function Kitchen() {
-  return (
-    <div>
-      <h1>Kitchen</h1>
-    </div>
-  )
+  return <KitchenTemplate />;
 }
