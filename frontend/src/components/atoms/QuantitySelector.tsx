@@ -1,22 +1,19 @@
-import { useState } from 'react';
+import type { Product } from '../../data/mock';
+import { useCartStore } from '../../stores/useCartStore';
 
 interface QuantitySelectorProps {
-  initialQuantity?: number;
-  onChange?: (quantity: number) => void;
+  product: Product;
 }
 
-export default function QuantitySelector({ initialQuantity = 0, onChange }: QuantitySelectorProps) {
-  const [quantity, setQuantity] = useState(initialQuantity);
-
-  const update = (newQty: number) => {
-    setQuantity(newQty);
-    onChange?.(newQty);
-  };
+export default function QuantitySelector({ product }: QuantitySelectorProps) {
+  const quantity = useCartStore((s) => s.items.get(product.id)?.quantity ?? 0);
+  const addItem = useCartStore((s) => s.addItem);
+  const removeItem = useCartStore((s) => s.removeItem);
 
   return (
     <div className="flex items-center gap-2">
       <button
-        onClick={() => update(Math.max(0, quantity - 1))}
+        onClick={() => removeItem(product.id)}
         className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 font-bold transition-colors cursor-pointer text-lg leading-none"
       >
         −
@@ -25,7 +22,7 @@ export default function QuantitySelector({ initialQuantity = 0, onChange }: Quan
         {quantity}
       </span>
       <button
-        onClick={() => update(quantity + 1)}
+        onClick={() => addItem(product)}
         className="w-8 h-8 rounded-lg bg-orange-500 hover:bg-orange-600 flex items-center justify-center text-white font-bold transition-colors cursor-pointer text-lg leading-none"
       >
         +

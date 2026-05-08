@@ -22,7 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         R$ {product.price.toFixed(2).replace('.', ',')}
       </p>
       <div className="mt-auto flex justify-center">
-        <QuantitySelector />
+        <QuantitySelector product={product} />
       </div>
     </div>
   );
