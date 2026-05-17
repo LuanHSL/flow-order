@@ -4,6 +4,7 @@ import http from 'node:http';
 import { Server } from 'socket.io';
 import routes from './routes/index.js';
 import { registerSocketHandlers } from './socket/index.js';
+import { connectDatabase } from './database/index.js';
 
 const PORT = Number(process.env.PORT) || 3001;
 
@@ -22,7 +23,8 @@ const io = new Server(server, {
 
 registerSocketHandlers(io);
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
+  await connectDatabase();
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📡 Socket.IO ready`);
   console.log(`🌐 Express routes active`);
