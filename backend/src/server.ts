@@ -5,10 +5,19 @@ import { Server } from 'socket.io';
 import routes from './routes/index.js';
 import { registerSocketHandlers } from './socket/index.js';
 import { connectDatabase } from './database/index.js';
+import cors from 'cors';
 
 const PORT = Number(process.env.PORT) || 3001;
 
 const app = express();
+
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ['Authorization', 'Content-Type', 'Accept'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(routes);
 

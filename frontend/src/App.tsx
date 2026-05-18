@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/products" replace />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:categoryId" element={<Products />} />
         <Route path="/kitchen" element={<Kitchen />} />
         <Route path="/orders" element={<Orders />} />
       </Routes>
